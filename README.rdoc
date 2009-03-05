@@ -1,0 +1,14 @@
+== ActiveAclPlus specs
+The specs were moved out of the main distribution as they include a custom
+rails root with external references and are not needed by most people anyway.
+
+If you want to execute the specs, go to the active_acl plugin directory.
+Then check out git://github.com/popel/active_acl_plus_spec.git to the 'spec' directory.
+
+You can test different environments by setting RAILS_ENV before.
+Look to database.example for possible setups and copy it to database.yml for changes.
+Then use 'rake spec' from inside the plugin directory.
+
+If you have questions about the setup for my tests, take a look at
+
+http://www.pathf.com/blogs/2008/09/tips-for-testing-plugins/

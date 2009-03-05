@@ -1,0 +1,26 @@
+sqlite3:
+  adapter: sqlite3
+  #database: ':memory:'
+  database: db/test.sqlite3
+  timeout: 5000
+
+
+postgresql:
+  :adapter: postgresql
+  :username: postgres
+  :password: postgres
+  :database: active_acl_test
+  :min_messages: ERROR
+  :host: localhost
+
+mysql:
+  :adapter: mysql
+  :host: localhost
+  :username: root
+  :password:
+  :database: active_acl_test
+
+development:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  timeout: 5000
