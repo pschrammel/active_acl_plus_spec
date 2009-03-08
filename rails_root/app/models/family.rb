@@ -11,8 +11,8 @@
 #
 
 
-class Category < ActiveRecord::Base
-  has_many :forums
+class Family < ActiveRecord::Base
+  has_many :people
   acts_as_nested_set
-  acts_as_access_group :type => ActiveAcl::Acts::AccessGroup::NestedSet
+  acts_as_access_group
 end

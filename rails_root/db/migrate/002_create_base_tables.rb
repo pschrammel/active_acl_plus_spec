@@ -56,6 +56,22 @@ class CreateBaseTables < ActiveRecord::Migration
       t.column :name, :string, :null => false
     end
     add_index :companies,:name
+    
+    create_table :people do |t|
+      t.column :name, :string, :null => false
+      t.column :family_id, :integer, :null => false    
+    end
+    add_index :people,:name
+    create_table :families do |t|
+      t.column :name, :string, :null => false
+      t.column :lft, :integer, :null => false
+      t.column :rgt, :integer, :null => false
+      t.column :parent_id, :integer
+    end
+    
+    add_index :families, :lft
+    add_index :families, :rgt
+
   end
   
   def self.down
@@ -64,5 +80,7 @@ class CreateBaseTables < ActiveRecord::Migration
 	drop_table :user_groups
 	drop_table :categories
 	drop_table :user_groups_users
+  drop_table :people
+  drop_table :families
   end
 end

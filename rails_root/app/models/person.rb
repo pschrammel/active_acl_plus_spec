@@ -10,10 +10,10 @@
 #  category_id :integer         not null
 #
 
-#example of a grouped target (not habtm)
-class Forum < ActiveRecord::Base
-  belongs_to :category
-  acts_as_access_object :grouped_by => :category
+#example of a grouped requester (not habtm)
+class Person < ActiveRecord::Base
+  belongs_to :family
+  acts_as_access_object :grouped_by => :family
   
   privilege_const_set('ADMIN' => 'administrate the forum',
                        'EDIT' => 'edit own postings',
