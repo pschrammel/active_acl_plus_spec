@@ -34,24 +34,24 @@ describe "3d privileges (grouped - grouped)" do
     end
     it "should have the g(hbtm)-g(htbm) privilege g-on-g" do
       @admin.has_privilege?(User::BAN,:on=> @user).should == false
-      acl=@admins.grant_permission!(User::BAN,:on => @users)
+      acl=@admins.grant_privilege!(User::BAN,:on => @users)
       @admin.active_acl_clear_cache!
       @admin.has_privilege?(User::BAN,:on => @user).should == true
     end
     it "should have the g(hbtm)-g(htbm) privilege o-on-g" do
       @admin.has_privilege?(User::BAN,:on=> @user).should == false
-      acl=@admin.grant_permission!(User::BAN,:on => @users)
+      acl=@admin.grant_privilege!(User::BAN,:on => @users)
       @admin.has_privilege?(User::BAN,:on => @user).should == true
     end
     it "should have the g(hbtm)-g(htbm) privilege g-on-o" do
       @admin.has_privilege?(User::BAN,:on=> @user).should == false
-      acl=@admins.grant_permission!(User::BAN,:on => @user)
+      acl=@admins.grant_privilege!(User::BAN,:on => @user)
       @admin.active_acl_clear_cache!
       @admin.has_privilege?(User::BAN,:on => @user).should == true
     end
     it "should have the g(hbtm)-g(htbm) privilege o-on-o" do
       @admin.has_privilege?(User::BAN,:on=> @user).should == false
-      acl=@admin.grant_permission!(User::BAN,:on => @user)
+      acl=@admin.grant_privilege!(User::BAN,:on => @user)
       @admin.has_privilege?(User::BAN,:on => @user).should == true
     end
   end
@@ -78,24 +78,24 @@ describe "3d privileges (grouped - grouped)" do
     end
     it "should have the g(hbtm)-g(htbm) privilege g-on-g" do
       @person.has_privilege?(User::BAN,:on=> @user).should == false
-      acl=@monsters.grant_permission!(User::BAN,:on => @users)
+      acl=@monsters.grant_privilege!(User::BAN,:on => @users)
       @person.active_acl_clear_cache!
       @person.has_privilege?(User::BAN,:on => @user).should == true
     end
     it "should have the g(hbtm)-g(htbm) privilege o-on-g" do
       @person.has_privilege?(User::BAN,:on=> @user).should == false
-      acl=@person.grant_permission!(User::BAN,:on => @users)
+      acl=@person.grant_privilege!(User::BAN,:on => @users)
       @person.has_privilege?(User::BAN,:on => @user).should == true
     end
     it "should have the g(hbtm)-g(htbm) privilege g-on-o" do
       @person.has_privilege?(User::BAN,:on=> @user).should == false
-      acl=@monsters.grant_permission!(User::BAN,:on => @user)
+      acl=@monsters.grant_privilege!(User::BAN,:on => @user)
       @person.active_acl_clear_cache!
       @person.has_privilege?(User::BAN,:on => @user).should == true
     end
     it "should have the g(hbtm)-g(htbm) privilege o-on-o" do
       @person.has_privilege?(User::BAN,:on=> @user).should == false
-      acl=@person.grant_permission!(User::BAN,:on => @user)
+      acl=@person.grant_privilege!(User::BAN,:on => @user)
       @person.has_privilege?(User::BAN,:on => @user).should == true
     end
   end
@@ -120,24 +120,24 @@ describe "3d privileges (grouped - grouped)" do
     end
     it "should have the privilege g-on-g" do
       @user.has_privilege?(User::BAN,:on=> @person).should == false
-      acl=@users.grant_permission!(User::BAN,:on => @monsters)
+      acl=@users.grant_privilege!(User::BAN,:on => @monsters)
       @user.active_acl_clear_cache!
       @user.has_privilege?(User::BAN,:on => @person).should == true
     end
     it "should have the privilege o-on-g" do
       @user.has_privilege?(User::BAN,:on=> @person).should == false
-      acl=@user.grant_permission!(User::BAN,:on => @monsters)
+      acl=@user.grant_privilege!(User::BAN,:on => @monsters)
       @user.has_privilege?(User::BAN,:on => @person).should == true
     end
     it "should have the privilege g-on-o" do
       @user.has_privilege?(User::BAN,:on=> @person).should == false
-      acl=@users.grant_permission!(User::BAN,:on => @person)
+      acl=@users.grant_privilege!(User::BAN,:on => @person)
       @user.active_acl_clear_cache!
       @user.has_privilege?(User::BAN,:on => @person).should == true
     end
     it "should have the privilege o-on-o" do
       @user.has_privilege?(User::BAN,:on=> @person).should == false
-      acl=@user.grant_permission!(User::BAN,:on => @person)
+      acl=@user.grant_privilege!(User::BAN,:on => @person)
       @user.has_privilege?(User::BAN,:on => @person).should == true
     end
   end
@@ -158,24 +158,24 @@ describe "3d privileges (grouped - grouped)" do
     end
     it "should have the privilege g-on-g" do
       @r.has_privilege?(User::BAN,:on=> @t).should == false
-      acl=@rs.grant_permission!(User::BAN,:on => @ts)
+      acl=@rs.grant_privilege!(User::BAN,:on => @ts)
       @r.active_acl_clear_cache!
       @r.has_privilege?(User::BAN,:on => @t).should == true
     end
     it "should have the privilege o-on-g" do
       @r.has_privilege?(User::BAN,:on=> @t).should == false
-      acl=@r.grant_permission!(User::BAN,:on => @ts)
+      acl=@r.grant_privilege!(User::BAN,:on => @ts)
       @r.has_privilege?(User::BAN,:on => @t).should == true
     end
     it "should have the privilege g-on-o" do
       @r.has_privilege?(User::BAN,:on=> @t).should == false
-      acl=@rs.grant_permission!(User::BAN,:on => @t)
+      acl=@rs.grant_privilege!(User::BAN,:on => @t)
       @r.active_acl_clear_cache!
       @r.has_privilege?(User::BAN,:on => @t).should == true
     end
     it "should have the privilege o-on-o" do
       @r.has_privilege?(User::BAN,:on=> @t).should == false
-      acl=@r.grant_permission!(User::BAN,:on => @t)
+      acl=@r.grant_privilege!(User::BAN,:on => @t)
       @r.has_privilege?(User::BAN,:on => @t).should == true
     end
   end

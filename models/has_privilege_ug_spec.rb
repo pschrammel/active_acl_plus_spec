@@ -23,7 +23,7 @@ describe "has_privilege ungrouped - grouped" do
   describe "with 2d" do
     it "should have the o privilege" do
       @company.has_privilege?(Company::POST_AD).should == false
-      acl=@company.grant_permission!(Company::POST_AD)
+      acl=@company.grant_privilege!(Company::POST_AD)
       @company.has_privilege?(Company::POST_AD).should == true
     end
   end

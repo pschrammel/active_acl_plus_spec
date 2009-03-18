@@ -32,12 +32,12 @@ describe "3d privileges (ungrouped - grouped)" do
     end
     it "should have the o-o privilege" do
       @company.has_privilege?(User::BAN,:on=> @user).should == false
-      acl=@company.grant_permission!(User::BAN,:on => @user)
+      acl=@company.grant_privilege!(User::BAN,:on => @user)
       @company.has_privilege?(User::BAN,:on=> @user).should == true
     end
     it "should have the o-g(hbtm) privilege" do
       @company.has_privilege?(User::BAN,:on=> @user).should == false
-      acl=@company.grant_permission!(User::BAN,:on => @users)
+      acl=@company.grant_privilege!(User::BAN,:on => @users)
       @company.has_privilege?(User::BAN,:on=> @user).should == true
     end
     
@@ -58,12 +58,12 @@ describe "3d privileges (ungrouped - grouped)" do
     end
     it "should have the o-o privilege" do
       @company.has_privilege?(User::BAN,:on=> @person).should == false
-      acl=@company.grant_permission!(User::BAN,:on => @person)
+      acl=@company.grant_privilege!(User::BAN,:on => @person)
       @company.has_privilege?(User::BAN,:on=> @person).should == true
     end
     it "should have the o-g(hbtm) privilege" do
       @company.has_privilege?(User::BAN,:on=> @person).should == false
-      acl=@company.grant_permission!(User::BAN,:on => @monsters)
+      acl=@company.grant_privilege!(User::BAN,:on => @monsters)
       @company.has_privilege?(User::BAN,:on=> @person).should == true
     end
   end

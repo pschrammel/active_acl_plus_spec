@@ -20,7 +20,7 @@ describe "has_privilege ungrouped - ungrouped" do
   
   it "should have the o privilege" do
     @company.has_privilege?(Company::POST_AD).should == false
-    acl=@company.grant_permission!(Company::POST_AD)
+    acl=@company.grant_privilege!(Company::POST_AD)
     
     @company.has_privilege?(Company::POST_AD).should == true
   end
@@ -28,7 +28,7 @@ describe "has_privilege ungrouped - ungrouped" do
   
   it "should have the o-o privilege" do
     @company.has_privilege?(Page::VIEW,:on=> @page).should == false
-    acl=@company.grant_permission!(Page::VIEW,:on => @page)
+    acl=@company.grant_privilege!(Page::VIEW,:on => @page)
     @company.has_privilege?(Page::VIEW,:on => @page).should == true
   end
 

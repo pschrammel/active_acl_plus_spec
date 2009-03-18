@@ -31,20 +31,20 @@ describe "3d privileges (grouped - ungrouped)" do
     
     it "should have the o-o privilege" do
       @user.has_privilege?(Page::VIEW,:on=> @page).should == false
-      acl=@user.grant_permission!(Page::VIEW,:on => @page)
+      acl=@user.grant_privilege!(Page::VIEW,:on => @page)
       @user.has_privilege?(Page::VIEW,:on => @page).should == true
     end
     
     it "should have the g-o privilege derived from group" do
       @user.has_privilege?(Page::VIEW,:on=> @page).should == false
-      acl=@users.grant_permission!(Page::VIEW,:on => @page)
+      acl=@users.grant_privilege!(Page::VIEW,:on => @page)
       @user.active_acl_clear_cache!
       @user.has_privilege?(Page::VIEW,:on => @page).should == true
     end
     
     it "should have the g-o privilege derived from object" do
       @user.has_privilege?(Page::VIEW,:on=> @page).should == false
-      acl=@user.grant_permission!(Page::VIEW,:on => @page)
+      acl=@user.grant_privilege!(Page::VIEW,:on => @page)
       @user.has_privilege?(Page::VIEW,:on => @page).should == true
     end
     
@@ -63,20 +63,20 @@ describe "3d privileges (grouped - ungrouped)" do
     
     it "should have the o-o privilege" do
       @person.has_privilege?(Page::VIEW,:on=> @page).should == false
-      acl=@person.grant_permission!(Page::VIEW,:on => @page)
+      acl=@person.grant_privilege!(Page::VIEW,:on => @page)
       @person.has_privilege?(Page::VIEW,:on => @page).should == true
     end
     
     it "should have the g-o privilege derived from group" do
       @person.has_privilege?(Page::VIEW,:on=> @page).should == false
-      acl=@monsters.grant_permission!(Page::VIEW,:on => @page)
+      acl=@monsters.grant_privilege!(Page::VIEW,:on => @page)
       @person.active_acl_clear_cache!
       @person.has_privilege?(Page::VIEW,:on => @page).should == true
     end
     
     it "should have the g-o privilege derived from object" do
       @person.has_privilege?(Page::VIEW,:on=> @page).should == false
-      acl=@person.grant_permission!(Page::VIEW,:on => @page)
+      acl=@person.grant_privilege!(Page::VIEW,:on => @page)
       @person.has_privilege?(Page::VIEW,:on => @page).should == true
     end
     

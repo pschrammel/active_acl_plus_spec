@@ -29,13 +29,13 @@ describe "2d privileges" do
     
     it "should have the object privilege" do
       @user.has_privilege?(User::LOGIN).should == false
-      acl=@user.grant_permission!(User::LOGIN)
+      acl=@user.grant_privilege!(User::LOGIN)
       @user.has_privilege?(User::LOGIN).should == true
     end
     
     it "should have the group privilege" do
       @user.has_privilege?(User::LOGIN).should == false
-      acl=@users.grant_permission!(User::LOGIN)
+      acl=@users.grant_privilege!(User::LOGIN)
       @user.active_acl_clear_cache! #the group knows nothing 
       #about the instances so we have to do this by hand 
       @user.has_privilege?(User::LOGIN).should == true
@@ -52,13 +52,13 @@ describe "2d privileges" do
     
     it "should have the object privilege" do
       @person.has_privilege?(User::LOGIN).should == false
-      acl=@person.grant_permission!(User::LOGIN)
+      acl=@person.grant_privilege!(User::LOGIN)
       @person.has_privilege?(User::LOGIN).should == true
     end
     
     it "should have the group privilege" do
       @person.has_privilege?(User::LOGIN).should == false
-      acl=@monsters.grant_permission!(User::LOGIN)
+      acl=@monsters.grant_privilege!(User::LOGIN)
       @person.active_acl_clear_cache! #the group knows nothing 
       #about the instances so we have to do this by hand 
       @person.has_privilege?(User::LOGIN).should == true

@@ -16,8 +16,9 @@ describe "ActiveAcl::Grant" do
     @users = UserGroup.create!(:description => 'users')
     @users.move_to_child_of(@root_group)
   end
-  it "should grant 2d permission to user" do
-    acl=@user.grant_permission!(User::LOGIN)
+  it "should grant 2d privilege to user" do
+    acl=@user.grant_privilege!(User::LOGIN)
+    acl.errors.should be_empty
     acl.requesters.should == [@user]
     acl.target_groups.should be_empty
     acl.requester_groups.should be_empty
@@ -28,9 +29,9 @@ describe "ActiveAcl::Grant" do
     acl.privileges[0].section.should == 'User'
     acl.privileges[0].value.should == 'LOGIN'
   end
-  it "should grant 3d permission to user on a user" do
+  it "should grant 3d privilege to user on a user" do
     user2=User.create!(:login => 'user2')
-    acl=@user.grant_permission!(User::BAN,:on => user2)
+    acl=@user.grant_privilege!(User::BAN,:on => user2)
     acl.requesters.should == [@user]
     acl.targets.should == [user2]
     acl.target_groups.should be_empty
@@ -38,15 +39,15 @@ describe "ActiveAcl::Grant" do
     acl.section.iname.should == 'generic'
   end
   
-  it "should grant permission on user to group" do
-    acl=@users.grant_permission!(User::BAN,:on => @user)
+  it "should grant privilege on user to group" do
+    acl=@users.grant_privilege!(User::BAN,:on => @user)
     acl.requesters.should be_empty
     acl.requester_groups.should == [@users]
     acl.target_groups.should be_empty
     acl.targets.should == [@user]
   end
-  it "should grant permission on group to user" do
-    acl=@user.grant_permission!(User::BAN,:on => @users)
+  it "should grant privilege on group to user" do
+    acl=@user.grant_privilege!(User::BAN,:on => @users)
     acl.requesters.should == [@user]
     acl.requester_groups.should be_empty
     acl.target_groups.should == [@users]
